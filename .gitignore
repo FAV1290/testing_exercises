@@ -1,0 +1,10 @@
+# Environments
+env
+venv
+.env
+
+
+# Cache
+__pycache__
+.mypy_cache
+.pytest_cache
