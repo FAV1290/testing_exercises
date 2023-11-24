@@ -5,15 +5,14 @@ import datetime
 from functions.level_1.two_date_parser import compose_datetime_from
 
 
-@pytest.mark.parametrize('date_str', ['tomorrow', 'not_tomorrow'])
 @pytest.mark.parametrize(
-    'time_str, expected_hour, expected_minute',
+    'date_str, time_str, expected_hour, expected_minute',
     [
-        ('  10:00', 10, 0),
-        ('23:59   ', 23, 59),
-        ('  00:00  ', 0, 0),
-        ('23:59', 23, 59),
-        ('00:00', 0, 0),
+        ('tomorrow', '  10:00', 10, 0),
+        ('today', '23:59   ', 23, 59),
+        ('yesterday','  00:00  ', 0, 0),
+        ('anywhen', '23:59', 23, 59),
+        ('tomorrow', '00:00', 0, 0),
     ],
 )
 def test_compose_datetime_from(date_str, time_str, expected_hour, expected_minute):

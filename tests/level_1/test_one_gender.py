@@ -5,9 +5,12 @@ from functions.level_1.one_gender import genderalize
 
 
 @pytest.mark.parametrize(
-    'gender, expected_verb_index',
-    [('male', 0), ('female', 1), ('attack_helicopter', 1)],
+    'verb_male, verb_female, gender, expected_result',
+    [
+        ('ехал', 'ехала', 'male', 'ехал'),
+        ('читал', 'читала', 'female', 'читала'),
+        ('спал', 'спала', 'anything else', 'спала'),
+    ],
 )
-def test_genderalize(gender, expected_verb_index):
-    verbs = ('some_male_verb', 'some_female_verb')
-    assert genderalize(*verbs, gender) == verbs[expected_verb_index]
+def test_genderalize(verb_male, verb_female, gender, expected_result):
+    assert genderalize(verb_male, verb_female, gender) == expected_result
