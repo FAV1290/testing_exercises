@@ -63,7 +63,7 @@ def test__replace_word__ignores_words_with_punctuation_marks(text, replace_from,
     assert replace_word(text, replace_from, replace_to) == text
 
 
-@pytest.mark.parametrize('text', [pytest.param('abc\ndef ghi', marks=pytest.mark.xfail)])
+@pytest.mark.xfail(reason='new_line_literal_replaced_to_space')
 def test__replace_word__replaces_non_space_split_separators_by_spaces(text):
     text = 'abc\ndef ghi'
     assert replace_word(text, '', '') == text
