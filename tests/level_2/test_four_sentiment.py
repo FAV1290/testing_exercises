@@ -7,10 +7,10 @@ from functions.level_2.four_sentiment import check_tweet_sentiment
 @pytest.mark.parametrize(
     'text, good_words, bad_words, expected_result',
     [
-        pytest.param('', set([]), set([]), None, id='all_blank'),
-        pytest.param('\n', set(['wonderful']), set(['filthy']), None, id='blank_text'),
-        pytest.param('hello', set([]), set(['filthy']), None, id='blank_good_words'),
-        pytest.param('wonderful day', set(['wonderful']), set([]), 'GOOD', id='blank_bad_words'),   
+        pytest.param('', set(), set(), None, id='all_blank'),
+        pytest.param('\n', {'wonderful'}, {'filthy'}, None, id='blank_text'),
+        pytest.param('hello', set(), {'filthy'}, None, id='blank_good_words'),
+        pytest.param('wonderful day', {'wonderful'}, set(), 'GOOD', id='blank_bad_words'),   
     ],
 )
 def test__check_tweet_sentiment__with_blank_args(text, good_words, bad_words, expected_result):
