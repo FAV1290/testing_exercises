@@ -1,6 +1,5 @@
 import pytest
 
-
 from functions.level_2.four_sentiment import check_tweet_sentiment
 
 
@@ -29,19 +28,16 @@ def test__check_tweet_sentiment__with_blank_args(text, good_words, bad_words, ex
         pytest.param('This dumbass is pretty bad at math', 'BAD', id='more_bad_words'),
     ],
 )
-def test__check_tweet_sentiment__works_for_different_good_to_bad_ratios(text, expected_result):
-    good_words = set(['pretty', 'good', 'fine', 'cool', 'thanks', 'damn'])
-    bad_words = set(['stupid', 'dumbass', 'lame', 'bad', 'piss off', 'damn'])
-    assert check_tweet_sentiment(text, good_words, bad_words) == expected_result
+def test__check_tweet_sentiment__works_for_different_good_to_bad_ratios(
+    text, expected_result, good_and_bad_words):
+    assert check_tweet_sentiment(text, *good_and_bad_words) == expected_result
 
 
 @pytest.mark.parametrize('text', ['Good', 'Bad', 'good', 'bad'])
 def test__check_tweet_sentiment__requires_lowered_set_elements(text):
-    assert check_tweet_sentiment(text, set(['Good']), set(['Bad'])) is None
+    assert check_tweet_sentiment(text, {'Good'}, {'Bad'}) is None
 
 
 def test__check_tweet_sentiment__does_not_count_words_with_punctuation_marks():
-    good_words = set(['fine'])
-    bad_words = set(['lame', 'bad'])
-    text = 'Framework is bad, but fine for lame developers'
-    assert check_tweet_sentiment(text, good_words, bad_words) != 'Bad'
+    test_text = 'Framework is bad, but fine for lame developers'
+    assert check_tweet_sentiment(test_text, {'fine'}, {'lame', 'bad'}) != 'Bad'

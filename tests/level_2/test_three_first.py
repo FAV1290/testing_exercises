@@ -1,6 +1,5 @@
 import pytest
 
-
 from functions.level_2.three_first import first, NOT_SET
 
 
