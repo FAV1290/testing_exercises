@@ -1,6 +1,5 @@
 import pytest
 
-
 from functions.level_1.five_title import change_copy_item
 
 
@@ -20,8 +19,7 @@ from functions.level_1.five_title import change_copy_item
         ('Copy of something (1)', 100, 'Copy of something (2)'),
         ('Copy of something (2)', 100, 'Copy of something (3)'),
         ('Copy of something (50)', 100, 'Copy of something (51)'),
-
     ],
 )
-def test_change_copy_item(title, max_main_item_title_length, expected_title):
+def test__change_copy_item__forms_correct_titles(title, max_main_item_title_length, expected_title):
     assert change_copy_item(title, max_main_item_title_length) == expected_title

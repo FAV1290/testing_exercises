@@ -1,6 +1,5 @@
 import pytest
 
-
 from functions.level_2.two_square_equation import solve_square_equation
 
 
@@ -22,19 +21,14 @@ from functions.level_2.two_square_equation import solve_square_equation
     ],
 )
 def test__solve_square_equation__works_for_elevated_discriminants_and_at_least_one_non_nulled_coef(
-    coefficients,
-    expected_result,
-):
-    stringify = lambda x: f'{x:.2f}' if not x is None else None
-    stringified_solutions = tuple(map(stringify, solve_square_equation(*coefficients)))
+    coefficients, expected_result, stringify):
+    stringified_solutions = tuple(map(stringify(2), solve_square_equation(*coefficients)))
     assert set(stringified_solutions) == set(expected_result)
 
 
-def test__solve_square_equation__rounds_solutions_with_long_fraction():
-    stringify = lambda x: f'{x:.18f}' if not x is None else None
-    stringified_solutions = tuple(
-        map(stringify, solve_square_equation(0, 2, 1.000000000000000088)))
-    assert set(stringified_solutions) != set(['-0.500000000000000044', None])
+def test__solve_square_equation__rounds_solutions_with_long_fraction(stringify):
+    test_solutions_map = map(stringify(18), solve_square_equation(0, 2, 1.000000000000000088))
+    assert set(test_solutions_map) != set(['-0.500000000000000044', None])
 
 
 @pytest.mark.parametrize('coefficients', [(1, -6, 34), (2, 4, 7.84)])

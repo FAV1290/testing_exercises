@@ -1,6 +1,5 @@
 import pytest
 
-
 from functions.level_1.three_url_builder import build_url
 
 
@@ -13,5 +12,5 @@ from functions.level_1.three_url_builder import build_url
         ('test.am', 'index.php', {'one': '1', 'two': '2'}, 'test.am/index.php?one=1&two=2'),
     ],
 )
-def test_build_url(host_name, relative_url, get_params, expected_url):
+def test__build_url__builds_correct_urls(host_name, relative_url, get_params, expected_url):
     assert build_url(host_name, relative_url, get_params) == expected_url

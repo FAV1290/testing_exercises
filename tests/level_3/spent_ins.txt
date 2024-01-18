@@ -1,0 +1,31 @@
+Bakery
+Bar
+Barber
+Bookshop
+Boutique
+Butcher's
+Cafe
+Candy shop
+Cthulhu cult
+Clothes shop
+Computer shop
+Delicatessen
+DVD rental
+Fish & chips shop
+Fishmonger's
+Gay bar
+Gift shop
+Greengrocer's
+Grocery
+Hardware store
+Jewellery store
+Mall
+Market
+Music shop
+Newsagent's
+Pawn shop
+Pet shop
+Restaurant
+Steam
+Supermarket
+Toy shop
